@@ -65,7 +65,7 @@ class SimpleContainer extends React.Component {
             <div className="card myCard">
                 <div className="card-body">
                     <h5 class="card-title">Simple Container</h5>
-                    <p class="card-text">Container == Component + State.</p>
+                    <p class="card-text">Container == Component + State. But don't take this too seriously as stated <a href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0">here</a></p>
                     <a href="#" onClick={this.countClicks} className="btn btn-primary"># of clicks: {this.state.clicks}</a>
                 </div>
             </div>
