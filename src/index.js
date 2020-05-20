@@ -10,14 +10,14 @@ class SimpleComponent extends React.Component {
         let button = "";
 
         if (exampleValue) {
-            button = <a href="#top" className="btn btn-primary">{exampleValue}</a>
+            button = <a href="#self" className="btn btn-primary">{exampleValue}</a>
         } // this is pretty ugly, but seems to be the way according to https://reactjs.org/docs/conditional-rendering.html
 
         return (
             <div className="card myCard">
                 <div className="card-body">
                     <h5 class="card-title">Simple Component</h5>
-                    <p class="card-text">I am a simple component. No state, just JSX. Nothing special. Note: Props are Read-Only!</p>
+                    <p class="card-text">I am a simple component. No state, just JSX. Nothing special. Note: Props (arbitrary inputs) are Read-Only!</p>
                     {button}
                 </div>
             </div>
@@ -31,7 +31,7 @@ function FunctionComponent(props) {
     let button = "";
 
     if (exampleValue) {
-        button = <a href="#top" className="btn btn-primary">{exampleValue}</a>
+        button = <a href="#self" className="btn btn-primary">{exampleValue}</a>
     }
 
     return (
@@ -66,7 +66,7 @@ class SimpleContainer extends React.Component {
                 <div className="card-body">
                     <h5 class="card-title">Simple Container</h5>
                     <p class="card-text">Container == Component + State. But don't take this too seriously as stated <a href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0">here</a></p>
-                    <a href="#" onClick={this.countClicks} className="btn btn-primary"># of clicks: {this.state.clicks}</a>
+                    <a href="#self" onClick={this.countClicks} className="btn btn-primary"># of clicks: {this.state.clicks}</a>
                 </div>
             </div>
         );
