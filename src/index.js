@@ -56,7 +56,7 @@ class SimpleContainer extends React.Component {
     }
 
     countClicks() {
-        this.setState({clicks: this.state.clicks + 1});
+        this.setState({ clicks: this.state.clicks + 1 });
     }
 
     render() {
@@ -66,10 +66,54 @@ class SimpleContainer extends React.Component {
                 <div className="card-body">
                     <h5 class="card-title">Simple Container</h5>
                     <p class="card-text">Container == Component + State. But don't take this too seriously as stated <a href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0">here</a></p>
+                    <p class="card-text">While this.props is set up by React itself and this.state has a special meaning, you are free to add additional fields to the class manually if you need to store something that doesn’t participate in the data flow (like a timer ID).</p>
+                    <ul><li>Do Not Modify State Directly </li>
+                        <li>State Updates May Be Asynchronous </li>
+                        <li>State Updates are Merged </li>
+                    </ul>
                     <a href="#self" onClick={this.countClicks} className="btn btn-primary"># of clicks: {this.state.clicks}</a>
                 </div>
             </div>
         );
+    }
+}
+
+class Clock extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            date: new Date(),
+        };
+    }
+
+
+    componentDidMount() {
+        this.timerID = setInterval(
+            () => this.tick(), 1000
+        );
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timerID);
+    }
+
+    tick() {
+        this.setState({ date: new Date() });
+    }
+
+    render() {
+
+        return (
+
+            <div className="card myCard">
+                <div className="card-body">
+                    <h5 class="card-title">Clock Container</h5>
+                    <p class="card-text">Example: <a href="https://reactjs.org/docs/state-and-lifecycle.html">https://reactjs.org/docs/state-and-lifecycle.html</a></p>
+                    <a href="#self" className="btn btn-primary">It is {this.state.date.toLocaleTimeString()}</a>
+                </div>
+            </div>
+        )
     }
 }
 
@@ -86,6 +130,7 @@ class Dashboard extends React.Component {
                 <FunctionComponent />
                 <FunctionComponent exampleValue={helloWorld} />
                 <SimpleContainer />
+                <Clock />
             </div>
         );
     }
