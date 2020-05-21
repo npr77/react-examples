@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Navbar from './components/navbar';
 import './index.css';
 
 class SimpleComponent extends React.Component {
@@ -124,13 +125,16 @@ class Dashboard extends React.Component {
         const helloWorld = 'Hello World!';
 
         return (
-            <div className="reactExamples">
-                <SimpleComponent />
-                <SimpleComponent exampleValue={helloWorld} />
-                <FunctionComponent />
-                <FunctionComponent exampleValue={helloWorld} />
-                <SimpleContainer />
-                <Clock />
+            <div>
+                <Navbar />
+                <div id="content" className="reactExamples">
+                    <SimpleComponent />
+                    <SimpleComponent exampleValue={helloWorld} />
+                    <FunctionComponent />
+                    <FunctionComponent exampleValue={helloWorld} />
+                    <SimpleContainer />
+                    <Clock />
+                </div>
             </div>
         );
     }
