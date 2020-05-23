@@ -1,40 +1,36 @@
 import React from 'react';
 
+// parents should know their children -> this.props.children
 class Parents extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.renderChildren = this.renderChildren.bind(this);
-        this.state = {
-            children: props.children,
-        };
-    }
-
-    renderChildren() {
-        return (
-            <div>TODO</div>
-        );
-    }
 
     render() {
         return (
             <div className="border">
                 <h3>Parents</h3>
-                {this.renderChildren}
+                <button type="button" class="btn btn-primary">TODO: Tell off children</button>
+                {this.props.children}
             </div>
         )
     }
 }
 
+// a child should remember it's name -> state
+// a child should be able to receive a message from its parents, but will not remember it -> props
 class Child extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+          name: this.props.name,
+        };
+      }
 
     render() {
 
-        const name = this.props.name;
-
         return (
             <div className="border">
-                <p>Child: {name}</p>
+                <p>Child: "{this.state.name}"</p>
+                <p>Message: "{this.props.message}"</p>
             </div>
         )
     }
@@ -54,7 +50,6 @@ export default class Data extends React.Component {
                     <Child name="bar" />
                 </Parents>
                 <Child name="solo" />
-
             </div>
         );
     }
