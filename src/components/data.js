@@ -15,7 +15,9 @@ class Parents extends React.Component {
             <div className="border">
                 <h3>Parents</h3>
                 <button type="button" className="btn btn-primary" onClick={() => this.setState({ message: "Bad child!" })}>TODO: Tell off children</button>
-                {this.props.children}
+                // TODO: instead of this we need some sort of {this.props.children} with new props
+                {React.cloneElement(this.props.children[0], { message: this.state.message })}
+                {React.cloneElement(this.props.children[1], { message: this.state.message })}
             </div>
         )
     }
