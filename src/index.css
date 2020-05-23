@@ -1,4 +1,4 @@
-.myCard {
- /* nothing */
- color: black;
+.border {
+    padding: 10px;
+    border: 1px solid black;
 }
