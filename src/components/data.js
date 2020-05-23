@@ -3,11 +3,18 @@ import React from 'react';
 // parents should know their children -> this.props.children
 class Parents extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            message: null,
+        };
+    }
+
     render() {
         return (
             <div className="border">
                 <h3>Parents</h3>
-                <button type="button" class="btn btn-primary">TODO: Tell off children</button>
+                <button type="button" className="btn btn-primary" onClick={() => this.setState({ message: "Bad child!" })}>TODO: Tell off children</button>
                 {this.props.children}
             </div>
         )
@@ -21,9 +28,9 @@ class Child extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          name: this.props.name,
+            name: this.props.name,
         };
-      }
+    }
 
     render() {
 
