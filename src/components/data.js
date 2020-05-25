@@ -14,10 +14,16 @@ class Parents extends React.Component {
         return (
             <div className="border">
                 <h3>Parents</h3>
-                <button type="button" className="btn btn-primary" onClick={() => this.setState({ message: "Bad child!" })}>TODO: Tell off children</button>
-                // TODO: instead of this we need some sort of {this.props.children} with new props
-                {React.cloneElement(this.props.children[0], { message: this.state.message })}
-                {React.cloneElement(this.props.children[1], { message: this.state.message })}
+                <button type="button" className="btn btn-primary" onClick={() => this.setState({ message: "Bad child!" })}>Tell off children</button>
+
+                {/* render each element of the children array */} 
+                {this.props.children.map(element =>
+                    <div key={element.id}>
+                        {/* and add the message property to each child, so parents can send them messages */} 
+                        {React.cloneElement(element, { message: this.state.message })}
+                    </div>
+                )}
+
             </div>
         )
     }
