@@ -13,6 +13,11 @@ class Parents extends React.Component {
     render() {
         return (
             <div className="border">
+                <pre>Parent -> Child: props</pre>
+                <pre>Child -> Parent: not directly possible.</pre>
+                <pre>Child gets an update function from the parent as props,</pre>
+                <pre>calls it so the state of the parent can be altered and rerenderd.</pre>
+                
                 <h3>Parents</h3>
                 <button type="button" className="btn btn-primary" onClick={() => this.setState({ message: "Bad child!" })}>Tell off children</button>
 
@@ -42,10 +47,15 @@ class Child extends React.Component {
 
     render() {
 
+        let message = null;
+        
+        if (this.props.message) {
+            message = "Parent: \"" + this.props.message + "\""; 
+        }
+
         return (
             <div className="border">
-                <p>Child: "{this.state.name}"</p>
-                <p>Message: "{this.props.message}"</p>
+                <p>Child: "{this.state.name}" {message}</p>
             </div>
         )
     }
