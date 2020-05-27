@@ -1,37 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
-import Home from './home';
-import Data from './data';
+import {Link} from "react-router-dom";
 
 class NavbarElement extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.switchContent = this.switchContent.bind(this);
-    }
-
-    switchContent() {
-        let component;
-        switch (this.props.name) {
-            case 'Data':
-                component = <Data />;
-                break;
-            default:
-                component = <Home />;
-                break;
-        }
-
-        ReactDOM.render(
-            component,
-            document.getElementById('content')
-        );
-    }
 
     render() {
         return (
             <li className="nav-item">
-                <a className="nav-link" href="#top" onClick={this.switchContent}>{this.props.name}</a>
+                <Link className="nav-link" to={this.props.uri}>{this.props.name}</Link>
             </li>
         );
     }
@@ -45,11 +21,11 @@ export default class Navbar extends React.Component {
             <div>
 
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <a className="navbar-brand" href="#top">React examples</a>
+                    <Link className="navbar-brand" to="/">React examples</Link>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
-                            <NavbarElement name="Home" />
-                            <NavbarElement name="Data" />
+                            <NavbarElement name="Home" uri="/" />
+                            <NavbarElement name="Data" uri="/data" />
                         </ul>
                         <form className="form-inline my-2 my-lg-0">
                             <input className="form-control mr-sm-2" type="search" placeholder="Channel" aria-label="Search" />
@@ -57,7 +33,6 @@ export default class Navbar extends React.Component {
                         </form>
                     </div>
                 </nav>
-
 
             </div>
         );

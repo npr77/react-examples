@@ -22,6 +22,7 @@ class Parents extends React.Component {
                 <button type="button" className="btn btn-primary" onClick={() => this.setState({ message: "Bad child!" })}>Tell off children</button>
 
                 {/* render each element of the children array */} 
+                {/* FIXME: Warning: Each child in a list should have a unique "key" prop. */} 
                 {this.props.children.map(element =>
                     <div key={element.id}>
                         {/* and add the message property to each child, so parents can send them messages */} 
